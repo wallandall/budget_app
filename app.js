@@ -41,9 +41,6 @@ budgetController = (function(){
       }
       data.allItems[type].push(newItem);
       return newItem;
-    },
-    testing: function(){
-      console.log(data);
     }
   };
 
@@ -87,6 +84,17 @@ var UIController = (function(){
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
     },
+    clearFields: function(){
+      var fields, fielsdArray;
+      fields = document.querySelectorAll(DOMstrings.inputDescription +','+ DOMstrings.inputValue);
+
+      fieldsArray = Array.prototype.slice.call(fields);
+
+      fieldsArray.forEach(function(current, index, array){
+        current.value = "";
+      });
+      fieldsArray[0].focus();
+    },
     getDOMstrings: function(){
       return DOMstrings;
     }
@@ -112,6 +120,7 @@ var controller = (function(budgetCtrl, UICtrl){
     newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
     UICtrl.addListItem(newItem, input.type);
+    UICtrl.clearFields();
   };
 
   return{
