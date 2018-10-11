@@ -220,6 +220,15 @@ var UIController = (function(){
           }
        });
     },
+    displayDate: function(){
+      var now, year, months, month;
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      now = new Date();
+      year = now.getFullYear();
+      month = now.getMonth();
+
+      document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
+    },
 
     getDOMstrings: function(){
       return DOMstrings;
@@ -284,6 +293,7 @@ var controller = (function(budgetCtrl, UICtrl){
 
   return{
     init: function(){
+      UICtrl.displayDate();
       UICtrl.displayBudget({
         budget: 0,
         totalInc: 0,
