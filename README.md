@@ -1,1 +1,2 @@
-Javascrip application to calculate given budget
+#Budget App
+JavaScript application to calculate budget
